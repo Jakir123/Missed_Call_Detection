@@ -37,6 +37,16 @@ public class MainActivity extends Activity implements LocationListener{
         getCurrentLocation();
 
         telephonyManager.listen(new TeleListener(), PhoneStateListener.LISTEN_CALL_STATE);
+        //---get the phone number---
+        String telNumber = telephonyManager.getLine1Number();
+        if (telNumber != null)
+            Toast.makeText(this, "Phone number: " + telNumber,
+                    Toast.LENGTH_LONG).show();
+        //---get the SIM card ID---
+        String simID = telephonyManager.getSimSerialNumber();
+        if (simID != null)
+            Toast.makeText(this, "SIM card ID: " + simID,
+                    Toast.LENGTH_LONG).show();
     }
 
     private void getCurrentLocation() {
